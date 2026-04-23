@@ -6,24 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Т-Банк Перевод</title>
     <style>
-        * {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            font-size: 16px;
+            /* Фиксированный базовый размер */
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
         body {
             background: radial-gradient(800px circle at 20% 20%, rgba(255, 221, 0, 0.12), transparent 55%),
                 linear-gradient(160deg, #0d0d0d 0%, #111 100%);
-            min-height: 100vh;
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            gap: 40px;
-            padding: 40px 20px;
             font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         .input-panel {
@@ -1270,6 +1281,75 @@
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+        }
+
+        .phone-screen,
+        .phone-screen * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            line-height: 1.2;
+        }
+
+        /* Фиксированные размеры шрифтов для критичных элементов */
+        .s1-title {
+            font-size: 16px !important;
+            line-height: 1.2 !important;
+        }
+
+        .contact-name {
+            font-size: 16px !important;
+            line-height: 1.2 !important;
+        }
+
+        .balance-amount {
+            font-size: 32px !important;
+            line-height: 1.1 !important;
+        }
+
+        @media screen and (min-resolution: 2dppx) {
+            .phone-container {
+                transform: scale(1);
+                transform-origin: center;
+            }
+        }
+
+        /* Предотвращение масштабирования на мобильных */
+        @media screen and (max-width: 480px) {
+            body {
+                zoom: 1;
+                -webkit-text-size-adjust: none;
+                -moz-text-size-adjust: none;
+                text-size-adjust: none;
+            }
+        }
+
+        :root {
+            --phone-padding: 11px;
+            --status-padding-x: 20px;
+            --header-padding: 14px 20px 10px;
+            --card-padding: 16px 20px 20px;
+            --row-margin: 0 16px 14px;
+            --input-padding: 14px 16px;
+            --button-padding: 16px;
+
+            /* Базовый масштаб */
+            --scale-factor: 1;
+        }
+
+        .phone-container {
+            padding: var(--phone-padding);
+            transform: scale(var(--scale-factor));
+        }
+
+        .status-bar {
+            padding: 0 var(--status-padding-x);
+        }
+
+        .s1-header {
+            padding: var(--header-padding);
+        }
+
+        .balance-card {
+            padding: var(--card-padding);
         }
     </style>
 </head>
